@@ -13,7 +13,7 @@ if [[ $? -eq 0 ]]; then
 else
   echo id_rsa copying in $PUBLIC_HOST
   if [ -f ~/.ssh/id_rsa.pub ]; then
-    cat ~/.ssh/id_rsa.pub | ssh $USER@$PUBLIC_HOST "cat >> ~/.ssh/authorized_keys"
+    ssh-copy-id $USER@$PUBLIC_HOST
   else
     echo Do not exist id_rsa.pub, can create one with next command "ssh-keygen -t rsa"
     exit
