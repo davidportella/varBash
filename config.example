@@ -1,0 +1,4 @@
+USER="username"
+PUBLIC_HOST="public.server.name"
+PRIVATE_HOST="private.server.name"
+PORTS="10050 10060 10051 10031 3306"
