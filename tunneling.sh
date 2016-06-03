@@ -3,7 +3,7 @@
 if [ -f .config ]; then
   source .config
 else
-  echo File config not existing
+  echo The configuration file does not exist
   exit
 fi
 
