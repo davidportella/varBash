@@ -8,6 +8,18 @@ To map ports private servers through the public server.
 
 Do not forget to create the file .config with your own data (example in config.example).
 
+Usage
+
+    $ ./tunneling.sh
+
+Or
+
+    $ source tunneling.sh
+
+Or with parameters
+
+    $ source tunneling.sh --user otherUserName
+
 #### Config ####
 
 In this file environment variables are set for the execution of varBash
