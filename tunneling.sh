@@ -7,11 +7,17 @@ else
   exit
 fi
 
-if [ -f ~/.ssh/id_rsa.pub ]; then
-  cat ~/.ssh/id_rsa.pub | ssh $USER@$PUBLIC_HOST "mkdir ~/.ssh; cat >> ~/.ssh/authorized_keys"
+ssh -o "BatchMode yes" $USER@$PUBLIC_HOST > /dev/null 2>&1 exit
+if [[ $? -eq 0 ]]; then
+  echo Auth with id_rsa in $PUBLIC_HOST
 else
-  echo Do not exist id_rsa.pub, can create one with next command "ssh-keygen -t rsa"
-  exit
+  echo id_rsa copying in $PUBLIC_HOST
+  if [ -f ~/.ssh/id_rsa.pub ]; then
+    cat ~/.ssh/id_rsa.pub | ssh $USER@$PUBLIC_HOST "cat >> ~/.ssh/authorized_keys"
+  else
+    echo Do not exist id_rsa.pub, can create one with next command "ssh-keygen -t rsa"
+    exit
+  fi
 fi
 
 createTunnel() {
